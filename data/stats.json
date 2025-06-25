@@ -1,0 +1,44 @@
+[
+  {
+    "id": "player1",
+    "name": "John Doe",
+    "goals": 10,
+    "assists": 5,
+    "ownGoals": 0,
+    "wins": 15,
+    "losses": 3,
+    "gamesPlayed": 18,
+    "saves": 2,
+    "touches": 320,
+    "possession": 1250,
+    "lastUpdated": "2025-06-24T12:00:00.000Z"
+  },
+  {
+    "id": "player2",
+    "name": "Jane Smith",
+    "goals": 8,
+    "assists": 12,
+    "ownGoals": 1,
+    "wins": 14,
+    "losses": 4,
+    "gamesPlayed": 18,
+    "saves": 0,
+    "touches": 290,
+    "possession": 1100,
+    "lastUpdated": "2025-06-24T12:00:00.000Z"
+  },
+  {
+    "id": "player3",
+    "name": "Alex Johnson",
+    "goals": 5,
+    "assists": 3,
+    "ownGoals": 0,
+    "wins": 0,
+    "losses": 0,
+    "gamesPlayed": 7,
+    "saves": 0,
+    "touches": 0,
+    "possession": 0,
+    "lastUpdated": "2025-06-25T01:41:31.721Z"
+  }
+]
