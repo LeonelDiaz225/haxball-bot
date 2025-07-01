@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createNewPlayerStats = createNewPlayerStats;
 /**
- * Create a new player stats object with default values
+ * Crear un nuevo objeto player stats con valores predeterminados
  * @param id Player ID
  * @param name Player name
  * @returns New PlayerStats object

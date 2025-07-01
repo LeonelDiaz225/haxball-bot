@@ -7,10 +7,10 @@ exports.deletePlayerStats = exports.updatePlayerStats = exports.addPlayerStats =
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const playerstats_1 = require("../models/playerstats");
-// Path to stats data file
+// Ruta del archivo de datos
 const DATA_FILE = path_1.default.join(__dirname, '../../data/stats.json');
 /**
- * Ensure the stats file exists, create with empty array if not
+ * Asegura que el archivo de datos existe, lo crea con un array vacío si no
  */
 const ensureDataFile = () => {
     if (!fs_1.default.existsSync(DATA_FILE)) {
@@ -18,7 +18,7 @@ const ensureDataFile = () => {
     }
 };
 /**
- * Read player stats from the JSON file
+ * Lee las estadisticas de los jugadores desde el archivo JSON
  * @returns Array of PlayerStats objects
  */
 const readStatsData = () => {
@@ -33,7 +33,7 @@ const readStatsData = () => {
     }
 };
 /**
- * Write player stats to the JSON file
+ * Escribe las estadisticas de los jugadores al archivo JSON
  * @param stats Array of PlayerStats objects to write
  */
 const writeStatsData = (stats) => {
@@ -41,7 +41,7 @@ const writeStatsData = (stats) => {
     fs_1.default.writeFileSync(DATA_FILE, JSON.stringify(stats, null, 2), 'utf8');
 };
 /**
- * Get all player statistics
+ * Obtiene todas las estadisticas de los jugadores
  */
 const getAllStats = (req, res) => {
     try {
@@ -55,7 +55,7 @@ const getAllStats = (req, res) => {
 };
 exports.getAllStats = getAllStats;
 /**
- * Get statistics for a specific player
+ * Obtiene las estadisticas de un jugador por ID
  */
 const getPlayerStats = (req, res) => {
     try {
@@ -75,7 +75,7 @@ const getPlayerStats = (req, res) => {
 };
 exports.getPlayerStats = getPlayerStats;
 /**
- * Add new player statistics
+ * Agrega nuevas estadisticas de un jugador
  */
 const addPlayerStats = (req, res) => {
     try {
@@ -85,14 +85,14 @@ const addPlayerStats = (req, res) => {
             return;
         }
         const stats = readStatsData();
-        // Check if player already exists
+        // Chequea si el jugador ya existe
         if (stats.some(player => player.id === id)) {
             res.status(409).json({ error: 'Player already exists' });
             return;
         }
-        // Create new player stats
+        // Crea un nuevo objeto de player stats
         const newPlayerStats = (0, playerstats_1.createNewPlayerStats)(id, name);
-        // Add stats from request body if provided
+        // Agrega propiedades adicionales si existen en el cuerpo de la solicitud
         Object.keys(req.body).forEach(key => {
             if (key !== 'id' && key !== 'name' && key in newPlayerStats) {
                 newPlayerStats[key] = req.body[key];
@@ -109,7 +109,7 @@ const addPlayerStats = (req, res) => {
 };
 exports.addPlayerStats = addPlayerStats;
 /**
- * Update player statistics
+ * Actualiza las estadisticas de un jugador por ID
  */
 const updatePlayerStats = (req, res) => {
     try {
@@ -120,11 +120,11 @@ const updatePlayerStats = (req, res) => {
             res.status(404).json({ error: 'Player not found' });
             return;
         }
-        // Update player stats
+        // Actualiza las estadisticas del jugador
         const updatedStats = {
             ...stats[playerIndex],
             ...req.body,
-            id: playerId, // Ensure ID doesn't change
+            id: playerId, // Asegura que el ID no se cambie
             lastUpdated: new Date().toISOString()
         };
         stats[playerIndex] = updatedStats;
@@ -138,7 +138,7 @@ const updatePlayerStats = (req, res) => {
 };
 exports.updatePlayerStats = updatePlayerStats;
 /**
- * Delete player statistics
+ * Borra las estadisticas de un jugador por ID
  */
 const deletePlayerStats = (req, res) => {
     try {

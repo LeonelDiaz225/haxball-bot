@@ -7,10 +7,10 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const stats_routes_1 = __importDefault(require("./routes/stats.routes"));
-// Initialize express app
+// Iniciar Express app
 const app = (0, express_1.default)();
 const PORT = parseInt(process.env.PORT || '3000', 10);
-// Create data directory if it doesn't exist
+// Crear directorio de datos si no existe
 const dataDir = path_1.default.join(__dirname, '../data');
 if (!fs_1.default.existsSync(dataDir)) {
     fs_1.default.mkdirSync(dataDir, { recursive: true });
@@ -18,7 +18,7 @@ if (!fs_1.default.existsSync(dataDir)) {
 // Middleware
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-// Log all requests
+// Loguear las peticiones
 app.use((req, _res, next) => {
     console.log(`${req.method} ${req.path} - ${new Date().toISOString()}`);
     next();
@@ -34,7 +34,7 @@ app.use((err, _req, res, _next) => {
     console.error('Error:', err.message);
     res.status(500).json({ error: 'Internal Server Error' });
 });
-// Start the server
+// Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`API available at http://localhost:${PORT}/api/stats`);

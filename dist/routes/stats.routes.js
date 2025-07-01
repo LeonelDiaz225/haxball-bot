@@ -4,16 +4,16 @@ const express_1 = require("express");
 const stats_controller_1 = require("../controllers/stats.controller");
 const router = (0, express_1.Router)();
 /**
- * API Routes for player statistics
+ * API Routes para las estadisticas de los jugadores
  */
-// Get all player statistics
+// Obtener todas las estadisticas de jugadores
 router.get('/', stats_controller_1.getAllStats);
-// Get statistics for a specific player by ID
+// Obtener estadisticas de un jugador por ID
 router.get('/:playerId', stats_controller_1.getPlayerStats);
-// Add new player statistics
+// Agregar estadisticas de un jugador
 router.post('/', stats_controller_1.addPlayerStats);
-// Update player statistics
+// Actualizar estadisticas de un jugador por ID
 router.put('/:playerId', stats_controller_1.updatePlayerStats);
-// Delete player statistics
+// Borrar estadisticas de un jugador por ID
 router.delete('/:playerId', stats_controller_1.deletePlayerStats);
 exports.default = router;

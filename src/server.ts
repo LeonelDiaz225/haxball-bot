@@ -25,7 +25,7 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
 
 // Routes
 app.get('/', (_req: Request, res: Response) => {
-  res.status(200).send('HaxBall Stats Bot API is running!');
+  res.status(200).send('HaxBall Stats Bot API esta corriendo!');
 });
 
 // Stats API routes
@@ -40,5 +40,5 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`API available at http://localhost:${PORT}/api/stats`);
+  console.log(`API disponible en http://localhost:${PORT}/api/stats`);
 });
